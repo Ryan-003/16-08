@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="Teste.css">
+
+
+<script>
+window.valores = [];
+
+function AddInicio() {
+}
+
+function AddFim() {
+  var campo = document.getElementById("field_numero");
+  var valorCampo = +campo.value;
+  campo.value = '';
+  window.valores.push(valorCampo);
+  atualizaValoresTela();
+  document.getElementById('valores').innerHTML = '<p style="text-align: center">'+window.valores.join(' | ')+'</p>';
+}
+
+function atualizaValoresTela(){
+    var pValores = document.getElementById('valores');
+   pValores.innerHTML = '<p>'+window.valores.join(' | ')+'</p>' 
+}
+
+function DelInicio() {
+        if (window.valores.length === 0) {
+        }
+        window.valores.shift();
+        atualizaValoresTela();
+      }
+
+function Delfim() {
+        if (window.valores.length > 0) {
+            window.valores.pop();
+        }
+          atualizaValoresTela();
+}
+  </script>
+
+</head>
+    
+    <body>
+
+        <h1 style="text-align: center;">Estrura de Dados</h1>
+     <div>
+<h3 style="text-align: center;">Valores</h3>
+<p id="valores"></p>
+     </div>
+        
+        <div style="text-align: center;">
+        <h2>Campo de Adcionar</h5>
+          <input type="number" id="field_numero">
+          <br>
+          <button onclick="AddInicio()"> Adciona Inicio</button>
+          <button onclick="AddFim()"> Adcionar Fim</button>
+          <button onclick="DelInicio()"> Remove Inicio - FIFO</button>
+          <button onclick="Delfim()"> Remove Fim - LIFO</button>
+          <br>
+        </div>
+        
+    
+    <div>
+    </div>
+    
+    <div style="text-align: center;">
+    <h4>Ordenação</h4>
+    <button>Ordena Crescente</button>
+    <button>Ordena Decrescente</button>
+    </div>
+    
+    <div style="text-align: center;">
+    <h2>Campo de Pesquisa</h5>
+   <input type="number" id="field_search">
+<button>buscar</button>
+    </div>
+
+<div>
+</div>
+
+        <script src="" async defer></script>
+    </body>
+</html>
