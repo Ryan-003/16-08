@@ -7,36 +7,70 @@
 <script>
 window.valores = [];
 
-function AddInicio() {
-}
-
-function AddFim() {
-  var campo = document.getElementById("field_numero");
-  var valorCampo = +campo.value;
-  campo.value = '';
-  window.valores.push(valorCampo);
+function Delfim() {
+  if (window.valores.length === 0) {
+    return;
+  }
+  window.valores.pop();
   atualizaValoresTela();
-  document.getElementById('valores').innerHTML = '<p style="text-align: center">'+window.valores.join(' | ')+'</p>';
-}
-
-function atualizaValoresTela(){
-    var pValores = document.getElementById('valores');
-   pValores.innerHTML = '<p>'+window.valores.join(' | ')+'</p>' 
+  document.getElementById('valores').innerHTML = '<p style="text-align: center">'+window.valores.join(' | ')+'</p>'
 }
 
 function DelInicio() {
-        if (window.valores.length === 0) {
-        }
-        window.valores.shift();
-        atualizaValoresTela();
-      }
-
-function Delfim() {
-        if (window.valores.length > 0) {
-            window.valores.pop();
-        }
-          atualizaValoresTela();
+  if (window.valores.length === 0) {
+    return;
+  }
+  window.valores.shift();
+  atualizaValoresTela();
+  document.getElementById('valores').innerHTML = '<p style="text-align: center">'+window.valores.join(' | ')+'</p>'
 }
+
+function AddInicio() {
+    var campo = document.getElementById("field_numero");
+    var valorCampo = +campo.value;
+    campo.value = '';
+    window.valores.unshift(valorCampo);
+    atualizaValoresTela();
+    document.getElementById('valores').innerHTML = '<p style="text-align: center">'+window.valores.join(' | ')+'</p>';
+  }
+  
+  function AddFim() {
+    var campo = document.getElementById("field_numero");
+    var valorCampo = +campo.value;
+    campo.value = '';
+    window.valores.push(valorCampo);
+    atualizaValoresTela();
+    document.getElementById('valores').innerHTML = '<p style="text-align: center">'+window.valores.join(' | ')+'</p>';
+  }
+  
+  function atualizaValoresTela(){
+      var pValores = document.getElementById('valores');
+     pValores.innerHTML = '<p>'+window.valores.join(' | ')+'</p>' 
+  }
+  
+  function OrdenaCrescente() {
+    window.valores.sort();
+    atualizaValoresTela();
+    document.getElementById('valores').innerHTML = '<p style="text-align: center">'+window.valores.join(' | ')+'</p>';
+  }
+  
+  function OrdenaDecrescente() {
+    window.valores.reverse();
+    atualizaValoresTela();
+    document.getElementById('valores').innerHTML = '<p style="text-align: center">'+window.valores.join(' | ')+'</p>';
+  }
+  
+  function Buscar() {
+    var campo = document.getElementById("field_search");
+    var valorCampo = +campo.value;
+    campo.value = '';
+    var index = window.valores.indexOf(valorCampo);
+    if (index > -1) {
+      alert("O valor " + valorCampo + " foi encontrado na posição " + index);
+    } else {
+      alert("O valor " + valorCampo + " não foi encontrado");
+    }
+  }
   </script>
 
 </head>
@@ -66,14 +100,14 @@ function Delfim() {
     
     <div style="text-align: center;">
     <h4>Ordenação</h4>
-    <button>Ordena Crescente</button>
-    <button>Ordena Decrescente</button>
+    <button onclick="OrdenaCrescente()">Ordena Crescente</button>
+    <button onclick="OrdenaDecrescente()">Ordena Decrescente</button>
     </div>
     
     <div style="text-align: center;">
     <h2>Campo de Pesquisa</h5>
    <input type="number" id="field_search">
-<button>buscar</button>
+<button onclick="Buscar()">buscar</button>
     </div>
 
 <div>
