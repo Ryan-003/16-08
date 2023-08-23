@@ -1,118 +1,136 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<link rel="stylesheet" href="Teste.css">
+  <link rel="stylesheet" href="Teste.css">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script>
-window.valores = [];
+  
+  <title>Estrutura de Dados</title>
 
-function Delfim() {
-  if (window.valores.length === 0) {
-    return;
-  }
-  window.valores.pop();
-  atualizaValoresTela();
-  document.getElementById('valores').innerHTML = '<p style="text-align: center">'+window.valores.join(' | ')+'</p>'
-}
+  <script>
+    window.valores = [];
 
-function DelInicio() {
-  if (window.valores.length === 0) {
-    return;
-  }
-  window.valores.shift();
-  atualizaValoresTela();
-  document.getElementById('valores').innerHTML = '<p style="text-align: center">'+window.valores.join(' | ')+'</p>'
-}
-
-function AddInicio() {
-    var campo = document.getElementById("field_numero");
-    var valorCampo = +campo.value;
-    campo.value = '';
-    window.valores.unshift(valorCampo);
-    atualizaValoresTela();
-    document.getElementById('valores').innerHTML = '<p style="text-align: center">'+window.valores.join(' | ')+'</p>';
-  }
-  
-  function AddFim() {
-    var campo = document.getElementById("field_numero");
-    var valorCampo = +campo.value;
-    campo.value = '';
-    window.valores.push(valorCampo);
-    atualizaValoresTela();
-    document.getElementById('valores').innerHTML = '<p style="text-align: center">'+window.valores.join(' | ')+'</p>';
-  }
-  
-  function atualizaValoresTela(){
-      var pValores = document.getElementById('valores');
-     pValores.innerHTML = '<p>'+window.valores.join(' | ')+'</p>' 
-  }
-  
-  function OrdenaCrescente() {
-    window.valores.sort();
-    atualizaValoresTela();
-    document.getElementById('valores').innerHTML = '<p style="text-align: center">'+window.valores.join(' | ')+'</p>';
-  }
-  
-  function OrdenaDecrescente() {
-    window.valores.reverse();
-    atualizaValoresTela();
-    document.getElementById('valores').innerHTML = '<p style="text-align: center">'+window.valores.join(' | ')+'</p>';
-  }
-  
-  function Buscar() {
-    var campo = document.getElementById("field_search");
-    var valorCampo = +campo.value;
-    campo.value = '';
-    var index = window.valores.indexOf(valorCampo);
-    if (index > -1) {
-      alert("O valor " + valorCampo + " foi encontrado na posição " + index);
-    } else {
-      alert("O valor " + valorCampo + " não foi encontrado");
+    function Delfim() {
+      if (window.valores.length === 0) {
+        return;
+      }
+      window.valores.pop();
+      atualizaValoresTela();
     }
-  }
+
+    function DelInicio() {
+      if (window.valores.length === 0) {
+        return;
+      }
+      window.valores.shift();
+      atualizaValoresTela();
+    }
+
+    function AddInicio() {
+      var campo = document.getElementById("field_numero");
+      var valorCampo = +campo.value;
+      campo.value = '';
+      window.valores.unshift(valorCampo);
+      atualizaValoresTela();
+    }
+
+    function AddFim() {
+      var campo = document.getElementById("field_numero");
+      var valorCampo = +campo.value;
+      campo.value = '';
+      window.valores.push(valorCampo);
+      atualizaValoresTela();
+    }
+
+    function atualizaValoresTela() {
+      var pValores = document.getElementById('valores');
+      pValores.innerHTML = '<p style="text-align: center">' + window.valores.join(' | ') + '</p>'
+    }
+
+    function OrdenaCrescente() {
+      window.valores.sort();
+      atualizaValoresTela();
+    }
+
+    function OrdenaDecrescente() {
+      window.valores.reverse();
+      atualizaValoresTela();
+    }
+
+    function Buscar() {
+      var campo = document.getElementById("field_search");
+      var valorCampo = +campo.value;
+      campo.value = '';
+      var index = window.valores.indexOf(valorCampo);
+      if (index > -1) {
+        alert("O valor " + valorCampo + " foi encontrado na posição " + index);
+      } else {
+        alert("O valor " + valorCampo + " não foi encontrado");
+      }
+      atualizaValoresTela()
+    }
   </script>
 
-</head>
-    
-    <body>
 
-        <h1 style="text-align: center;">Estrura de Dados</h1>
-     <div>
-<h3 style="text-align: center;">Valores</h3>
-<p id="valores"></p>
-     </div>
-        
-        <div style="text-align: center;">
-        <h2>Campo de Adcionar</h5>
-          <input type="number" id="field_numero">
-          <br>
-          <button onclick="AddInicio()"> Adciona Inicio</button>
-          <button onclick="AddFim()"> Adcionar Fim</button>
-          <button onclick="DelInicio()"> Remove Inicio - FIFO</button>
-          <button onclick="Delfim()"> Remove Fim - LIFO</button>
-          <br>
-        </div>
-        
-    
-    <div>
-    </div>
-    
-    <div style="text-align: center;">
+  <script>
+    function myFunction() {
+      var element = document.body;
+      element.classList.toggle("dark-mode");
+    }
+  </script>
+
+
+</head>
+
+<body>
+
+  <div style="position: absolute ;" style="background-color: blueviolet;">
+    <h7>Dark/Light <br>
+      Mode</h7>
+    <button onclick="myFunction()">dark mode</button>
+  </div>
+
+  <h1 style="text-align: center;">Estrura de Dados</h1>
+  <div>
+    <h3 style="text-align: center;">Valores</h3>
+    <p id="valores"></p>
+  </div>
+
+  <div style="text-align: center;">
+    <h2>Campo de Adcionar</h5>
+      <input type="number" id="field_numero">
+      <br>
+      <button onclick="AddInicio()"> Adciona Inicio</button>
+      <button onclick="AddFim()"> Adcionar Fim</button>
+      <button onclick="DelInicio()"> Remove Inicio - FIFO</button>
+      <button onclick="Delfim()"> Remove Fim - LIFO</button>
+      <br>
+  </div>
+
+
+  <div>
+  </div>
+
+  <div style="text-align: center;">
     <h4>Ordenação</h4>
     <button onclick="OrdenaCrescente()">Ordena Crescente</button>
     <button onclick="OrdenaDecrescente()">Ordena Decrescente</button>
-    </div>
-    
-    <div style="text-align: center;">
+  </div>
+
+  <div style="text-align: center;">
     <h2>Campo de Pesquisa</h5>
-   <input type="number" id="field_search">
-<button onclick="Buscar()">buscar</button>
-    </div>
+      <input type="number" id="field_search">
+      <button onclick="Buscar()">buscar</button>
+  </div>
 
-<div>
-</div>
+  <div>
+  </div>
 
-        <script src="" async defer></script>
-    </body>
+  <script src="" async defer></script>
+
+
+</body>
+
 </html>
