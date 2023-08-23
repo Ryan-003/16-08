@@ -55,9 +55,11 @@
     }
 
     function OrdenaDecrescente() {
-      window.valores.reverse();
-      atualizaValoresTela();
-    }
+  window.valores.sort(function(a, b) {
+    return b - a;
+  });
+  atualizaValoresTela();
+}
 
     function Buscar() {
       var campo = document.getElementById("field_search");
@@ -69,7 +71,6 @@
       } else {
         alert("O valor " + valorCampo + " não foi encontrado");
       }
-      atualizaValoresTela()
     }
   </script>
 
