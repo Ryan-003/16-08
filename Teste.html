@@ -50,16 +50,18 @@
     }
 
     function OrdenaCrescente() {
-      window.valores.sort();
-      atualizaValoresTela();
-    }
-
-    function OrdenaDecrescente() {
-  window.valores.sort(function(a, b) {
-    return b - a;
-  });
-  atualizaValoresTela();
-}
+    window.valores.sort(function(a, b) {
+      return parseInt(a) - parseInt(b);
+    });
+    atualizaValoresTela();
+  }
+  
+  function OrdenaDecrescente() {
+    window.valores.sort(function(a, b) {
+      return parseInt(b) - parseInt(a);
+    });
+    atualizaValoresTela();
+  }
 
     function Buscar() {
       var campo = document.getElementById("field_search");
